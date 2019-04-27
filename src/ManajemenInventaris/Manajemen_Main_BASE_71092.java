@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 
 public class Manajemen_Main extends javax.swing.JFrame {
     
@@ -13,12 +12,6 @@ public class Manajemen_Main extends javax.swing.JFrame {
     //Main UI list
     public Manajemen_HomePanel homePanel = null;
     public Manajemen_PersediaanBarangPanel persediaanBarangPanel = null;
-<<<<<<< HEAD
-    public Manajemen_PengembalianBarangPanel pengembalianBarangPanel = null;
-    
-=======
-    public Manajemen_PeminjamanBarangPanel peminjamanBarangPanel = null;
->>>>>>> ui/PeminjamanBarang
     
     public Manajemen_Main() throws Exception{
         initComponents();
@@ -28,14 +21,7 @@ public class Manajemen_Main extends javax.swing.JFrame {
         
         homePanel = new Manajemen_HomePanel(this);
         persediaanBarangPanel = new Manajemen_PersediaanBarangPanel(this);
-<<<<<<< HEAD
-        pengembalianBarangPanel = new Manajemen_PengembalianBarangPanel(this);
-=======
-        peminjamanBarangPanel = new Manajemen_PeminjamanBarangPanel(this);
->>>>>>> ui/PeminjamanBarang
-        
         this.getContentPane().add(persediaanBarangPanel,BorderLayout.CENTER);
-        persediaanBarangPanel.setVisible(false);
         this.getContentPane().add(homePanel,BorderLayout.CENTER);
         homePanel.setVisible(true);
 
@@ -61,15 +47,6 @@ public class Manajemen_Main extends javax.swing.JFrame {
         
         return new Dimension((int)new_width, (int)new_height);
     } 
-    
-    public void backToHome(JPanel panel) {
-        panel.setVisible(false);
-        homePanel.setVisible(true);
-<<<<<<< HEAD
-        System.out.println("Total Panel in Frame: "+this.getComponentCount());
-=======
->>>>>>> ui/PeminjamanBarang
-    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

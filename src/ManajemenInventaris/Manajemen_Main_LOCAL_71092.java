@@ -13,12 +13,8 @@ public class Manajemen_Main extends javax.swing.JFrame {
     //Main UI list
     public Manajemen_HomePanel homePanel = null;
     public Manajemen_PersediaanBarangPanel persediaanBarangPanel = null;
-<<<<<<< HEAD
     public Manajemen_PengembalianBarangPanel pengembalianBarangPanel = null;
     
-=======
-    public Manajemen_PeminjamanBarangPanel peminjamanBarangPanel = null;
->>>>>>> ui/PeminjamanBarang
     
     public Manajemen_Main() throws Exception{
         initComponents();
@@ -28,11 +24,7 @@ public class Manajemen_Main extends javax.swing.JFrame {
         
         homePanel = new Manajemen_HomePanel(this);
         persediaanBarangPanel = new Manajemen_PersediaanBarangPanel(this);
-<<<<<<< HEAD
         pengembalianBarangPanel = new Manajemen_PengembalianBarangPanel(this);
-=======
-        peminjamanBarangPanel = new Manajemen_PeminjamanBarangPanel(this);
->>>>>>> ui/PeminjamanBarang
         
         this.getContentPane().add(persediaanBarangPanel,BorderLayout.CENTER);
         persediaanBarangPanel.setVisible(false);
@@ -65,10 +57,7 @@ public class Manajemen_Main extends javax.swing.JFrame {
     public void backToHome(JPanel panel) {
         panel.setVisible(false);
         homePanel.setVisible(true);
-<<<<<<< HEAD
         System.out.println("Total Panel in Frame: "+this.getComponentCount());
-=======
->>>>>>> ui/PeminjamanBarang
     }
     
     @SuppressWarnings("unchecked")
