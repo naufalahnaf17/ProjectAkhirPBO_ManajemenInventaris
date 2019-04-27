@@ -15,6 +15,7 @@ public class Manajemen_Main extends javax.swing.JFrame {
     public Manajemen_PersediaanBarangPanel persediaanBarangPanel = null;
     public Manajemen_PengembalianBarangPanel pengembalianBarangPanel = null;
     
+    
     public Manajemen_Main() throws Exception{
         initComponents();
         this.setLayout(new BorderLayout());
@@ -56,6 +57,7 @@ public class Manajemen_Main extends javax.swing.JFrame {
     public void backToHome(JPanel panel) {
         panel.setVisible(false);
         homePanel.setVisible(true);
+        System.out.println("Total Panel in Frame: "+this.getComponentCount());
     }
     
     @SuppressWarnings("unchecked")
