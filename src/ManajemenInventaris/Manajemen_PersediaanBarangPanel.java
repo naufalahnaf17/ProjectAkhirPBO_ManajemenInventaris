@@ -14,10 +14,6 @@ public class Manajemen_PersediaanBarangPanel extends javax.swing.JPanel {
         this.docker_panel.add(new PersediaanBarang_PendataanBarangPanel(parent, this), BorderLayout.CENTER);
     }
 
-    
-    
-    
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
