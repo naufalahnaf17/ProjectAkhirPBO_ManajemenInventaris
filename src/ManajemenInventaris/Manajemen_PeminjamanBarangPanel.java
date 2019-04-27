@@ -1,16 +1,23 @@
 package ManajemenInventaris;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 public class Manajemen_PeminjamanBarangPanel extends javax.swing.JPanel {
 
     private Manajemen_Main parent;
+    
+    private PeminjamanBarang_AfterPinjamButtonPanel darkPanel = null;
     
     public Manajemen_PeminjamanBarangPanel(Manajemen_Main parent) throws IOException{
         this.parent = parent;
@@ -200,11 +207,14 @@ public class Manajemen_PeminjamanBarangPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_homeMouseClicked
-        parent.backToHome(this);
+        this.parent.backToHome(this);
+//        this.parent.remove(darkPanel);
     }//GEN-LAST:event_button_homeMouseClicked
 
     private void button_pinjamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_pinjamMouseClicked
-        
+//        darkPanel = new PeminjamanBarang_AfterPinjamButtonPanel(parent);
+//        this.parent.revalidate();
+//        this.validate();
     }//GEN-LAST:event_button_pinjamMouseClicked
 
 
