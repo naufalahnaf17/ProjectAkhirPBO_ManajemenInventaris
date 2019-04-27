@@ -1,20 +1,6 @@
 package ManajemenInventaris;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.Image;
-import java.awt.Insets;
-import java.awt.Label;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.List;
-import java.util.Random;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.SwingWorker;
-import javax.swing.Timer;
 
 public class Manajemen_PersediaanBarangPanel extends javax.swing.JPanel {
 
@@ -141,8 +127,7 @@ public class Manajemen_PersediaanBarangPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        this.setVisible(false);
-        this.parent.homePanel.setVisible(true);
+        this.parent.backToHome(this);
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
