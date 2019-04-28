@@ -8,58 +8,60 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class Manajemen_Main extends javax.swing.JFrame {
-    
+
     //Main UI list
     public Manajemen_HomePanel homePanel = null;
-    public Manajemen_PersediaanBarangPanel persediaanBarangPanel = null;
+    public Manajemen_PendataanBarangPanel pendataanBarangPanel = null;
     public Manajemen_PengembalianBarangPanel pengembalianBarangPanel = null;
     public Manajemen_PeminjamanBarangPanel peminjamanBarangPanel = null;
-    
-    public Manajemen_Main() throws Exception{
+
+    public Manajemen_Main() throws Exception {
         initComponents();
         this.setLayout(new BorderLayout());
         this.setTitle("Manajemen Inventaris");
         this.setIconImage(ImageIO.read(new File("image\\smkn4.png")).getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-        
+
         homePanel = new Manajemen_HomePanel(this);
-        persediaanBarangPanel = new Manajemen_PersediaanBarangPanel(this);
+        pendataanBarangPanel = new Manajemen_PendataanBarangPanel(this);
         pengembalianBarangPanel = new Manajemen_PengembalianBarangPanel(this);
         peminjamanBarangPanel = new Manajemen_PeminjamanBarangPanel(this);
-        
-        this.getContentPane().add(persediaanBarangPanel,BorderLayout.CENTER);
-        persediaanBarangPanel.setVisible(false);
-        this.getContentPane().add(homePanel,BorderLayout.CENTER);
+
+        this.getContentPane().add(pendataanBarangPanel, BorderLayout.CENTER);
+        pendataanBarangPanel.setVisible(false);
+        this.getContentPane().add(homePanel, BorderLayout.CENTER);
         homePanel.setVisible(true);
 
     }
-    
-    public Dimension getScaledDimension(Dimension imgSize,Dimension boundary) {
+
+    public Dimension getScaledDimension(Dimension imgSize, Dimension boundary) {
         double original_width = imgSize.getWidth();
         double original_height = imgSize.getHeight();
         double bound_width = boundary.getWidth();
         double bound_height = boundary.getHeight();
         double new_width = original_width;
         double new_height = original_height;
-        
+
         if (original_width > bound_width) {
             new_width = bound_width;
-            new_height = (new_width * original_height) / original_width; 
+            new_height = (new_width * original_height) / original_width;
         }
-        
+
         if (new_height > bound_height) {
             new_height = bound_height;
             new_width = (new_height * original_width) / original_height;
         }
-        
-        return new Dimension((int)new_width, (int)new_height);
-    } 
-    
+
+        return new Dimension((int) new_width, (int) new_height);
+    }
+
     public void backToHome(JPanel panel) {
         panel.setVisible(false);
+        homePanel.repaint();
+        homePanel.revalidate();
         homePanel.setVisible(true);
-        System.out.println("Total Panel in Frame: "+this.getComponentCount());
+        System.out.println("Total Panel in Frame: " + this.getComponentCount());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -105,10 +107,10 @@ public class Manajemen_Main extends javax.swing.JFrame {
             public void run() {
                 try {
                     new Manajemen_Main().setVisible(true);
-                }catch (Exception ex) {
+                } catch (Exception ex) {
                     ex.printStackTrace();
                 }
-                
+
             }
         });
     }

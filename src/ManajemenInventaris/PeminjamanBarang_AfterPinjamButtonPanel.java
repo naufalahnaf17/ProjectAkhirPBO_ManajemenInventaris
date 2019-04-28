@@ -5,7 +5,7 @@ import java.awt.Color;
 public class PeminjamanBarang_AfterPinjamButtonPanel extends javax.swing.JPanel {
 
     private Manajemen_Main parent = null;
-    
+
     public PeminjamanBarang_AfterPinjamButtonPanel(Manajemen_Main parent) {
         initComponents();
         this.setBackground(new Color(0, 0, 0, 50));
@@ -73,7 +73,6 @@ public class PeminjamanBarang_AfterPinjamButtonPanel extends javax.swing.JPanel 
 //        this.parent.repaint();
 //        this.revalidate();
     }//GEN-LAST:event_jLabel1MouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

@@ -12,16 +12,15 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.SwingWorker;
 
-
 public class SplashScreen extends javax.swing.JFrame {
     // JANGAN GANTI CODE KALAU TIDAK MENGERTI
     // GANTI HANYA ANDA TAU APA YANG ANDA LAKUKAN
-           
+
     private int mouse_x;
     private int mouse_y;
     private Manajemen_Main mm = null;
     private boolean isUnableToStart = false;
-    
+
     public SplashScreen() {
         initComponents(); //membuat semua component SplashScreen
         initImage(); // memuat image
@@ -32,9 +31,9 @@ public class SplashScreen extends javax.swing.JFrame {
         draggablePanel(); //membuat jpanel bisa di drag 
         startLoad(); // swing worker
     }
-    
+
     private void initImage() {
-        
+
         //membuat dan resize tombol close
         BufferedImage closebtn = null;
         BufferedImage mulaiBtn = null;
@@ -45,14 +44,14 @@ public class SplashScreen extends javax.swing.JFrame {
             ImageIcon closeBtnImage = new ImageIcon(closebtn.getScaledInstance(42, 42, Image.SCALE_SMOOTH));
             button_mulai.setIcon(mulaiBtnImage);
             button_close.setIcon(closeBtnImage);
-        }catch (IOException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
-        }finally {
+        } finally {
             button_mulai.setText("");
             button_close.setText("");
         }
     }
-    
+
     private void draggablePanel() {
         //membuat mouse listener
         panel_splashscreen.addMouseListener(new MouseAdapter() {
@@ -60,44 +59,43 @@ public class SplashScreen extends javax.swing.JFrame {
             public void mousePressed(MouseEvent me) {
                 //menyimpan coord mouse jika mouse di click
                 mouse_x = me.getX();
-                mouse_y = me.getY(); 
+                mouse_y = me.getY();
                 super.mousePressed(me);
             }
         });
-        
+
         //membuat mouse motion listener
         panel_splashscreen.addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseDragged(MouseEvent me) {
-                int x = me.getXOnScreen()-mouse_x; //menyimpan coord X dari cursor di layar
-                int y = me.getYOnScreen()-mouse_y; //menyimpan coord Y dari cursor di layar
+                int x = me.getXOnScreen() - mouse_x; //menyimpan coord X dari cursor di layar
+                int y = me.getYOnScreen() - mouse_y; //menyimpan coord Y dari cursor di layar
                 setLocation(x, y); // menggati posisi FORM/Window
                 super.mouseDragged(me);
             }
         });
     }
-    
+
     private void startLoad() {
-        SwingWorker<Void,String> swingWorker = new SwingWorker<Void, String>() {
+        SwingWorker<Void, String> swingWorker = new SwingWorker<Void, String>() {
             @Override
             protected Void doInBackground() throws Exception {
                 this.publish("Memuat Komponen Utama...");
                 try {
                     mm = new Manajemen_Main();
                     isUnableToStart = true;
-                }catch (Exception ex) {
-                    this.publish("<html><font color=red>Error memuat komponen utama </font>("+ex.getMessage()+")</html>");
+                } catch (Exception ex) {
+                    this.publish("<html><font color=red>Error memuat komponen utama </font>(" + ex.getMessage() + ")</html>");
                     this.cancel(true);
                 }
-                
-                
+
                 return null;
             }
 
             @Override
             protected void process(List<String> list) {
                 super.process(list);
-                label_loading.setText(list.get(list.size() -1));
+                label_loading.setText(list.get(list.size() - 1));
             }
 
             @Override
@@ -105,15 +103,15 @@ public class SplashScreen extends javax.swing.JFrame {
                 super.done();
                 if (!this.isCancelled()) {
                     this.publish("<html><font color=green>Memuat selesai</font></html>");
-                    if(isUnableToStart) {
+                    if (isUnableToStart) {
                         button_mulai.setEnabled(true);
                     }
-                }  
-            }      
+                }
+            }
         };
         swingWorker.execute();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

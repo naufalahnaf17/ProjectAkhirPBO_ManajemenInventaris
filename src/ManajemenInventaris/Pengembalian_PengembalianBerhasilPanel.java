@@ -11,17 +11,17 @@ import javax.swing.ImageIcon;
 public class Pengembalian_PengembalianBerhasilPanel extends javax.swing.JPanel {
 
     private Manajemen_Main parent = null;
-    
-    public Pengembalian_PengembalianBerhasilPanel(Manajemen_Main parent) throws IOException{
+
+    public Pengembalian_PengembalianBerhasilPanel(Manajemen_Main parent) throws IOException {
         this.parent = parent;
         initComponents();
-        
+
         label_gambarBerhasil.setBackground(Color.WHITE);
         BufferedImage berhasilPengembalian = ImageIO.read(new File("image\\Main_Pengembalian_Berhasil.png"));
         label_gambarBerhasil.setIcon(new ImageIcon(berhasilPengembalian.getScaledInstance(berhasilPengembalian.getWidth(), berhasilPengembalian.getHeight(), Image.SCALE_SMOOTH)));
         label_gambarBerhasil.setText("");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -61,7 +61,6 @@ public class Pengembalian_PengembalianBerhasilPanel extends javax.swing.JPanel {
     private void label_gambarBerhasilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_gambarBerhasilMouseClicked
         this.parent.backToHome(this);
     }//GEN-LAST:event_label_gambarBerhasilMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel label_gambarBerhasil;

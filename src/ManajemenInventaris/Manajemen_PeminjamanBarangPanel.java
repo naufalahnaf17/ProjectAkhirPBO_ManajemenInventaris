@@ -12,14 +12,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 public class Manajemen_PeminjamanBarangPanel extends javax.swing.JPanel {
 
     private Manajemen_Main parent;
-    
+
     private PeminjamanBarang_AfterPinjamButtonPanel darkPanel = null;
-    
-    public Manajemen_PeminjamanBarangPanel(Manajemen_Main parent) throws IOException{
+
+    public Manajemen_PeminjamanBarangPanel(Manajemen_Main parent) throws IOException {
         this.parent = parent;
         initComponents();
         initGambar();
@@ -28,13 +27,13 @@ public class Manajemen_PeminjamanBarangPanel extends javax.swing.JPanel {
     private void initGambar() throws IOException {
         BufferedImage harapScan = ImageIO.read(new File("image\\scanning_onboarding.png"));
         BufferedImage pinjamBtn = ImageIO.read(new File("image\\button\\pinjam_btn.png"));
-        
+
         label_gambarHarapScan.setIcon(new ImageIcon(harapScan.getScaledInstance(harapScan.getWidth(), harapScan.getHeight(), Image.SCALE_SMOOTH)));
         label_gambarHarapScan.setText("");
         button_pinjam.setIcon(new ImageIcon(pinjamBtn.getScaledInstance(pinjamBtn.getWidth(), pinjamBtn.getHeight(), Image.SCALE_SMOOTH)));
         button_pinjam.setText("");
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -216,7 +215,6 @@ public class Manajemen_PeminjamanBarangPanel extends javax.swing.JPanel {
 //        this.parent.revalidate();
 //        this.validate();
     }//GEN-LAST:event_button_pinjamMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel button_home;

@@ -143,7 +143,7 @@ public class Manajemen_HomePanel extends javax.swing.JPanel {
         this.peminjamanbarang_btn.setIcon(new ImageIcon(peminjamanImage.getScaledInstance(peminjamanImage.getWidth(), persediaanImage.getHeight(), Image.SCALE_SMOOTH)));
         this.pengembalianbarang_btn.setIcon(new ImageIcon(pengembalianImage.getScaledInstance(pengembalianImage.getWidth(), pengembalianImage.getHeight(), Image.SCALE_SMOOTH)));
         scan_btn.setEnabled(true);
-        selectedPanel = parent.persediaanBarangPanel;
+        selectedPanel = parent.pendataanBarangPanel;
     }//GEN-LAST:event_persediaanbarang_btnMouseClicked
 
     private void peminjamanbarang_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_peminjamanbarang_btnMouseClicked
@@ -169,7 +169,6 @@ public class Manajemen_HomePanel extends javax.swing.JPanel {
                 parent.add(selectedPanel, BorderLayout.CENTER);
                 selectedPanel.setVisible(true);
             }
-
         }
     }//GEN-LAST:event_scan_btnMouseClicked
 

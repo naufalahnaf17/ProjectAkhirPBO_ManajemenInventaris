@@ -33,7 +33,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="docker_panel" max="32767" attributes="0"/>
+              <Component id="docker_panel" pref="589" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -42,7 +42,7 @@
     <Container class="javax.swing.JPanel" name="jPanel3">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="db" green="98" red="34" type="rgb"/>
+          <Color blue="ff" green="99" red="66" type="rgb"/>
         </Property>
       </Properties>
 
@@ -50,25 +50,27 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="88" max="-2" attributes="0"/>
+                  <EmptySpace pref="292" max="32767" attributes="0"/>
+                  <Component id="bar_barangLayakPakai" min="-2" pref="192" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="bar_barangRusak" min="-2" pref="192" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="bar_peminjaman" min="-2" pref="192" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="bar_pengembalian" min="-2" pref="192" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  <Component id="bar_dataSiswa" min="-2" pref="192" max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="72" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="192" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" pref="192" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jSeparator2" min="-2" pref="271" max="-2" attributes="0"/>
-                              <Component id="jTextField1" min="-2" pref="262" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="jTextField1" min="-2" pref="262" max="-2" attributes="0"/>
+                      <Component id="jSeparator2" min="-2" pref="271" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="810" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,14 +79,17 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="bar_barangLayakPakai" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="bar_dataSiswa" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="bar_barangRusak" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="bar_peminjaman" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
+                      <Component id="bar_pengembalian" alignment="3" min="-2" pref="64" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   <Component id="jTextField1" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
                   <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               </Group>
@@ -101,16 +106,16 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="back_arrow"/>
+            <Property name="text" type="java.lang.String" value="home_button"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel1MouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="bar_barangLayakPakai">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="dd" green="a2" red="49" type="rgb"/>
+              <Color blue="ff" green="87" red="4c" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="16" style="1"/>
@@ -119,14 +124,17 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Pendataan Barang"/>
+            <Property name="text" type="java.lang.String" value="Barang layak pakai"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bar_barangLayakPakaiMouseClicked"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="bar_dataSiswa">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="db" green="98" red="34" type="rgb"/>
+              <Color blue="ff" green="99" red="66" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="16" style="0"/>
@@ -135,9 +143,12 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Riwayat Peminjaman"/>
+            <Property name="text" type="java.lang.String" value="Data Siswa"/>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bar_dataSiswaMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
@@ -159,6 +170,63 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="bar_barangRusak">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="66" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Barang rusak"/>
+            <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bar_barangRusakMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="bar_peminjaman">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="66" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Peminjaman"/>
+            <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bar_peminjamanMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="bar_pengembalian">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="66" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Pengembalian"/>
+            <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="bar_pengembalianMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

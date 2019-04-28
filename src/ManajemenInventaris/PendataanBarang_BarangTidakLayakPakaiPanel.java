@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 import javax.imageio.ImageIO;
@@ -13,32 +14,38 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingWorker;
 
-public class PersediaanBarang_PendataanBarangPanel extends javax.swing.JPanel {
+public class PendataanBarang_BarangTidakLayakPakaiPanel extends javax.swing.JPanel {
 
     private final int MAX_X = 4;
     private int current_x = 0;
     private int current_y = 0;
-    private Manajemen_Main main = null;
-    private Manajemen_PersediaanBarangPanel parent = null;
+    private Manajemen_Main parent = null;
+    private Manajemen_PendataanBarangPanel docker = null;
 
     //digunakan saat masa pengembangan
     private static final int DEVONLY_JUMLAH_BARANG = 100;
     private String[] namaBarangs = {"dummy_barang", "barang_dummy", "barang_barang", "dummy_dummy"};
     private File[] gambarBarangs = {new File("image\\smkn4.png"), new File("image\\venom_test.jpg"), new File("image\\white_test.jpg")};
+    private String[] kondisi = {"Rusak", "Sangat Rusak"};
 
-    public PersediaanBarang_PendataanBarangPanel(Manajemen_Main main,Manajemen_PersediaanBarangPanel parent) {
+    public PendataanBarang_BarangTidakLayakPakaiPanel(Manajemen_Main parent, Manajemen_PendataanBarangPanel docker) throws IOException {
+        this.docker = docker;
+        this.parent = parent;
         initComponents();
         initBarang();
-        this.main = main;
-        this.parent = parent;
-        
+        initGambar();
+
     }
-    
+
+    private void initGambar() throws IOException {
+    }
+
     private void initBarang() {
         SwingWorker<Void, String> sw = new SwingWorker<Void, String>() {
             @Override
             protected Void doInBackground() throws Exception {
                 for (int i = 0; i < DEVONLY_JUMLAH_BARANG; i++) {
+                    System.out.println("BarangTidakLayakPakai");
                     GridBagConstraints gbsBarangPanel = new GridBagConstraints();
                     System.out.println(current_x + "<before inc>" + current_y);
                     gbsBarangPanel.gridx = current_x;
@@ -48,40 +55,29 @@ public class PersediaanBarang_PendataanBarangPanel extends javax.swing.JPanel {
                     current_x = (current_x != MAX_X) ? current_x + 1 : 0;
                     System.out.println(current_x + "<after inc>" + current_y);
                     try {
-                        JLabel loadingLabel = new JLabel("Loading...["+(i+1)+"]");
-                        panel_dockerBarang.add(loadingLabel,gbsBarangPanel);
-                        panel_dockerBarang.add(new PersediaanBarang_BarangPanel(parent, namaBarangs[new Random().nextInt(namaBarangs.length)],ImageIO.read(gambarBarangs[new Random().nextInt(gambarBarangs.length)]),""), gbsBarangPanel);
+                        JLabel loadingLabel = new JLabel("Loading...[" + (i + 1) + "]");
+                        panel_dockerBarang.add(loadingLabel, gbsBarangPanel);
+                        panel_dockerBarang.add(new PendataanBarang_BarangPanel(parent,
+                                namaBarangs[new Random().nextInt(namaBarangs.length)],
+                                kondisi[new Random().nextInt(kondisi.length)],
+                                ImageIO.read(gambarBarangs[new Random().nextInt(gambarBarangs.length)]),
+                                ""), gbsBarangPanel);
                         panel_dockerBarang.remove(loadingLabel);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
-                    panel_dockerBarang.updateUI();
-                    panel_dockerBarang.revalidate();
+
+                    if (docker.selectedPanel.equals(PendataanBarang_BarangTidakLayakPakaiPanel.this)) {
+                        docker.revalidate();
+                        panel_dockerBarang.updateUI();
+                        panel_dockerBarang.revalidate();
+                    }
                 }
                 return null;
             }
         };
         sw.execute();
     }
-
-//    //DEVLOPMENT
-//    public void showBarangDetail(BufferedImage gambarBarang, String namaBarang,int kuantitas,String barcodeID) {
-//        SwingWorker<Void,String> sw = new SwingWorker<Void, String>() {
-//            @Override
-//            protected Void doInBackground() throws Exception {
-//                this.publish("<html><font color=red>Sedang memuat...</red></html>");
-//                this.publish("<html><font color=green>Memuat selesai</red></html>");
-//                return null;
-//            }
-    
-//            @Override
-//            protected void process(List<String> list) {
-//                super.process(list);
-////                label_loadingStatus.setText(list.get(list.size() -1));
-//            }  
-//        };
-//        sw.execute();        
-//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -104,14 +100,13 @@ public class PersediaanBarang_PendataanBarangPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1360, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 577, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

@@ -13,32 +13,32 @@ import javax.swing.border.Border;
 public class Manajemen_PengembalianBarangPanel extends javax.swing.JPanel {
 
     private Manajemen_Main parent;
-    
+
     Pengembalian_PengembalianBerhasilPanel berhasilPanel = null;
-            
+
     // TODO: verifikasi user sebelum masuk form ini
     //Akan digunakan jika DB sudah jalan
     private boolean isSafeToStart = false;
     private int userId;
-    
+
     public Manajemen_PengembalianBarangPanel(Manajemen_Main parent) throws IOException {
         this.parent = parent;
         berhasilPanel = new Pengembalian_PengembalianBerhasilPanel(parent);
-        
-        initComponents(); 
+
+        initComponents();
         initGambar(); //init Gambar
-        
+
         ButtonGroup bgKondisi = new ButtonGroup(); // membuat agar button ter-kelompok
         bgKondisi.add(radBtn_Rusak);
         bgKondisi.add(radBtn_HampirRusak);
         bgKondisi.add(radBtn_Baik);
         bgKondisi.add(radBtn_SangatBaik);
-        
+
     }
-    
-    private void initGambar() throws IOException{
+
+    private void initGambar() throws IOException {
         BufferedImage confirmBtn = ImageIO.read(new File("image\\button\\konfirmasi_btn.png"));
-        
+
         button_confirm.setIcon(new ImageIcon(confirmBtn.getScaledInstance(confirmBtn.getWidth(), confirmBtn.getHeight(), Image.SCALE_SMOOTH)));
         button_confirm.setText("");
     }
@@ -343,11 +343,10 @@ public class Manajemen_PengembalianBarangPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_button_homeMouseClicked
 
     private void button_confirmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_confirmMouseClicked
-        this.parent.getContentPane().add(berhasilPanel,new BorderLayout().CENTER);
+        this.parent.getContentPane().add(berhasilPanel, new BorderLayout().CENTER);
         this.berhasilPanel.setVisible(true);
         this.parent.pengembalianBarangPanel.setVisible(false);
     }//GEN-LAST:event_button_confirmMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel button_confirm;
