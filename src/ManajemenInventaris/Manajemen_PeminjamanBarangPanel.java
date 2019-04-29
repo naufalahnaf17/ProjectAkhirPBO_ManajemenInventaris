@@ -211,9 +211,15 @@ public class Manajemen_PeminjamanBarangPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_button_homeMouseClicked
 
     private void button_pinjamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_pinjamMouseClicked
-//        darkPanel = new PeminjamanBarang_AfterPinjamButtonPanel(parent);
-//        this.parent.revalidate();
-//        this.validate();
+        darkPanel = new PeminjamanBarang_AfterPinjamButtonPanel(parent);
+        this.parent.add(darkPanel,BorderLayout.CENTER);
+        darkPanel.setBackground(new Color(0, 0, 0, 20));
+        this.parent.revalidate();
+        this.parent.repaint();
+        this.repaint();
+        this.revalidate();
+        
+
     }//GEN-LAST:event_button_pinjamMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

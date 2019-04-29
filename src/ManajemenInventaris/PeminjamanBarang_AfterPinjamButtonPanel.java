@@ -7,8 +7,8 @@ public class PeminjamanBarang_AfterPinjamButtonPanel extends javax.swing.JPanel 
     private Manajemen_Main parent = null;
 
     public PeminjamanBarang_AfterPinjamButtonPanel(Manajemen_Main parent) {
+        this.parent = parent;
         initComponents();
-        this.setBackground(new Color(0, 0, 0, 50));
     }
 
     @SuppressWarnings("unchecked")
@@ -66,12 +66,9 @@ public class PeminjamanBarang_AfterPinjamButtonPanel extends javax.swing.JPanel 
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        this.parent.backToHome(this);
-        System.out.println("Pressed");
-//        this.parent.remove(this);
-//        this.removeAll();
-//        this.parent.repaint();
-//        this.revalidate();
+        this.removeAll();
+        this.parent.repaint();
+        this.revalidate();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
