@@ -94,6 +94,9 @@
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="tambah_button"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="button_tambahMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

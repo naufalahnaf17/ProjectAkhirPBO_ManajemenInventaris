@@ -23,9 +23,10 @@ public class PendataanBarang_BarangPanel extends javax.swing.JPanel {
     }
 
     public PendataanBarang_BarangPanel(Manajemen_PendataanBarangPanel parent, int idbarang) {
-
+        
     }
 
+    // CONTRUCTOR DUMMY
     public PendataanBarang_BarangPanel(Manajemen_Main parent, String namaBarang, String kondisi, BufferedImage gambarBarang, String barcodeid) {
         this.parent = parent;
         initComponents();
@@ -59,7 +60,12 @@ public class PendataanBarang_BarangPanel extends javax.swing.JPanel {
             label_gambarbarang.setText("Gambar tidak ada");
         }
     }
-
+    
+    private void getFromDB() {
+        String query = "SELECT * FROM t_barang WHERE kondisi = 'layakPakai'";
+        
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

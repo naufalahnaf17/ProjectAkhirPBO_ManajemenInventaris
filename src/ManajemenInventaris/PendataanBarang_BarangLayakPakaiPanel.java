@@ -68,7 +68,6 @@ public class PendataanBarang_BarangLayakPakaiPanel extends javax.swing.JPanel {
                                 ImageIO.read(gambarBarangs[new Random().nextInt(gambarBarangs.length)]),
                                 ""), gbsBarangPanel);
 
-                        panel_dockerBarang.remove(loadingLabel);
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -108,6 +107,11 @@ public class PendataanBarang_BarangLayakPakaiPanel extends javax.swing.JPanel {
 
         button_tambah.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         button_tambah.setText("tambah_button");
+        button_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_tambahMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panel_bottomLayout = new javax.swing.GroupLayout(panel_bottom);
         panel_bottom.setLayout(panel_bottomLayout);
@@ -141,6 +145,11 @@ public class PendataanBarang_BarangLayakPakaiPanel extends javax.swing.JPanel {
                 .addComponent(panel_bottom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void button_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_tambahMouseClicked
+        BarangLayakPakai_TambahForm form = new BarangLayakPakai_TambahForm();
+        form.setVisible(true);
+    }//GEN-LAST:event_button_tambahMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel button_tambah;
