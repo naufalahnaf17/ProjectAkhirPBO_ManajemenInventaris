@@ -4,6 +4,9 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -16,19 +19,24 @@ import javax.swing.table.DefaultTableModel;
 public class PendataanBarang_DataSiswaPanel extends javax.swing.JPanel {
 
     private Manajemen_Main parent = null;
+    ResultSet result;
+    Connection connection;
+    PreparedStatement preStatement;
+    DefaultTableModel defaultTableModel;
     private Manajemen_PendataanBarangPanel docker = null;
 
     public PendataanBarang_DataSiswaPanel(Manajemen_Main parent, Manajemen_PendataanBarangPanel docker) throws IOException {
         this.parent = parent;
         this.docker = docker;
         initComponents();
+        readData();
     }
 
     private void readData() {
         String[] kolomTabel = {"NIS", "Nama", "Kelas", "Jurusan"};
         defaultTableModel = new DefaultTableModel(null, kolomTabel);
         try {
-            connection = DB.getConnection();
+            connection = DBConnection.getConnection();
             preStatement = connection.prepareStatement("SELECT * from murid ");
             //System.out.println(preStatement);
             result = preStatement.executeQuery();
@@ -54,6 +62,7 @@ public class PendataanBarang_DataSiswaPanel extends javax.swing.JPanel {
         initTableColumn();
     }
 
+
     private void initTableColumn() {
         DefaultTableCellRenderer dtr = new DefaultTableCellRenderer();
         dtr.setHorizontalAlignment(JLabel.CENTER);
@@ -77,7 +86,8 @@ public class PendataanBarang_DataSiswaPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table_pinjamHistory1 = new javax.swing.JTable();
+        siswa_tabel = new javax.swing.JTable();
+        detail = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(102, 102, 102));
 
@@ -85,9 +95,9 @@ public class PendataanBarang_DataSiswaPanel extends javax.swing.JPanel {
 
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
 
-        table_pinjamHistory1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        table_pinjamHistory1.setForeground(new java.awt.Color(51, 153, 255));
-        table_pinjamHistory1.setModel(new javax.swing.table.DefaultTableModel(
+        siswa_tabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        siswa_tabel.setForeground(new java.awt.Color(51, 153, 255));
+        siswa_tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -106,14 +116,19 @@ public class PendataanBarang_DataSiswaPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        table_pinjamHistory1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        table_pinjamHistory1.setFillsViewportHeight(true);
-        table_pinjamHistory1.setGridColor(new java.awt.Color(51, 153, 255));
-        table_pinjamHistory1.setOpaque(false);
-        table_pinjamHistory1.setRowHeight(40);
-        table_pinjamHistory1.setRowSelectionAllowed(false);
-        table_pinjamHistory1.setSelectionForeground(new java.awt.Color(51, 153, 255));
-        jScrollPane2.setViewportView(table_pinjamHistory1);
+        siswa_tabel.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        siswa_tabel.setFillsViewportHeight(true);
+        siswa_tabel.setGridColor(new java.awt.Color(51, 153, 255));
+        siswa_tabel.setOpaque(false);
+        siswa_tabel.setRowHeight(40);
+        siswa_tabel.setRowSelectionAllowed(false);
+        siswa_tabel.setSelectionForeground(new java.awt.Color(51, 153, 255));
+        siswa_tabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                siswa_tabelMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(siswa_tabel);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,6 +146,13 @@ public class PendataanBarang_DataSiswaPanel extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        detail.setText("Details");
+        detail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detailActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,20 +160,36 @@ public class PendataanBarang_DataSiswaPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(detail)
+                .addContainerGap(144, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(detail)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+    int baris;
+    private void siswa_tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siswa_tabelMouseClicked
+        baris = siswa_tabel.getSelectedRow();
+    }//GEN-LAST:event_siswa_tabelMouseClicked
+
+    private void detailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailActionPerformed
+        String nis = (String) siswa_tabel.getValueAt(baris, 0);
+        detailSiswa ds = new detailSiswa(parent,true,nis);
+        ds.setVisible(true);
+        
+    }//GEN-LAST:event_detailActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton detail;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable table_pinjamHistory1;
+    private javax.swing.JTable siswa_tabel;
     // End of variables declaration//GEN-END:variables
 }
