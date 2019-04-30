@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
+import java.sql.Connection;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -14,9 +15,10 @@ public class Manajemen_Main extends javax.swing.JFrame {
     public Manajemen_PendataanBarangPanel pendataanBarangPanel = null;
     public Manajemen_PengembalianBarangPanel pengembalianBarangPanel = null;
     public Manajemen_PeminjamanBarangPanel peminjamanBarangPanel = null;
-
+    Connection koneksi;
     public Manajemen_Main() throws Exception {
         initComponents();
+        koneksi = DBconnection.getKoneksi();
         this.setLayout(new BorderLayout());
         this.setTitle("Manajemen Inventaris");
         this.setIconImage(ImageIO.read(new File("image\\smkn4.png")).getScaledInstance(30, 30, Image.SCALE_SMOOTH));
@@ -30,7 +32,8 @@ public class Manajemen_Main extends javax.swing.JFrame {
         pendataanBarangPanel.setVisible(false);
         this.getContentPane().add(homePanel, BorderLayout.CENTER);
         homePanel.setVisible(true);
-
+        
+        
     }
 
     public Dimension getScaledDimension(Dimension imgSize, Dimension boundary) {

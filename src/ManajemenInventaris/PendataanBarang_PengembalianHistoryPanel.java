@@ -4,19 +4,23 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-
+import javax.swing.table.DefaultTableModel;
 public class PendataanBarang_PengembalianHistoryPanel extends javax.swing.JPanel {
-
+DefaultTableModel dtm;
     private Manajemen_Main parent = null;
     private Manajemen_PendataanBarangPanel docker = null;
-
     public PendataanBarang_PengembalianHistoryPanel(Manajemen_Main parent, Manajemen_PendataanBarangPanel docker) throws IOException {
         this.parent = parent;
         this.docker = docker;
         initComponents();
         initImage();
+        showdata();
     }
 
     private void initImage() throws IOException {
@@ -34,12 +38,18 @@ public class PendataanBarang_PengembalianHistoryPanel extends javax.swing.JPanel
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         panel_bottom = new javax.swing.JPanel();
         button_ubah = new javax.swing.JLabel();
         button_hapus = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table_pinjamHistory = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txsearch = new javax.swing.JTextField();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        RadioDesc = new javax.swing.JRadioButton();
+        btnFilter = new javax.swing.JToggleButton();
 
         setBackground(new java.awt.Color(102, 102, 102));
 
@@ -109,29 +119,125 @@ public class PendataanBarang_PengembalianHistoryPanel extends javax.swing.JPanel
         table_pinjamHistory.setSelectionForeground(new java.awt.Color(51, 153, 255));
         jScrollPane1.setViewportView(table_pinjamHistory);
 
+        jLabel1.setText("search");
+
+        txsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txsearchActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("ASC");
+
+        buttonGroup1.add(RadioDesc);
+        RadioDesc.setText("DESC");
+        RadioDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RadioDescActionPerformed(evt);
+            }
+        });
+
+        btnFilter.setText("Filter");
+        btnFilter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFilterActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel_bottom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RadioDesc)
+                            .addGap(8, 8, 8))
+                        .addComponent(txsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton1)
+                            .addComponent(RadioDesc))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFilter)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(panel_bottom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txsearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txsearchActionPerformed
+
+    private void RadioDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioDescActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RadioDescActionPerformed
+
+    private void btnFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFilterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnFilterActionPerformed
+
+    public void showdata() {
+        String [] kolom = {"No" , "ID Pengembalian","Nama","NIS","Waktu Pengembelian","Tanggal Pengembalian"};
+        dtm = new DefaultTableModel (null,kolom);
+        int no = 1;
+        try{
+            Statement stmt = parent.koneksi.createStatement();
+            String query = "SELECT * FROM tbl_pengembalian " 
+                    + "INNER JOIN tbl_murid ON (tbl_pengembalian.id_murid = tbl_murid.id_murid)";
+            ResultSet rs = stmt.executeQuery(query);
+            while(rs.next()) {
+                String id_pengembalian = String.valueOf(("id_pengembalian"));
+                String nis = String.valueOf(rs.getInt("nis"));
+                String nama = rs.getString("nama");
+                String tgl_pengembalian = rs.getDate("tgl_pengembalian").toString();
+                String wkt_pengembalian = rs.getTime("waktu_pengembalian").toString();
+                
+                dtm.addRow(new String[] {
+                   no + "" , id_pengembalian,nama,nis, tgl_pengembalian,wkt_pengembalian
+                });
+                no++;
+            }
+           table_pinjamHistory.setModel(dtm);
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton RadioDesc;
+    private javax.swing.JToggleButton btnFilter;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel button_hapus;
     private javax.swing.JLabel button_ubah;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel_bottom;
     private javax.swing.JTable table_pinjamHistory;
+    private javax.swing.JTextField txsearch;
     // End of variables declaration//GEN-END:variables
 }
