@@ -140,7 +140,7 @@ public class PendataanBarang_BarangPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void label_gambarbarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_gambarbarangMouseClicked
-        new PendataanBarang_EditHapusForm(this).setVisible(true);
+        new PendataanBarang_EditHapusForm(this, 0).setVisible(true);
     }//GEN-LAST:event_label_gambarbarangMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
