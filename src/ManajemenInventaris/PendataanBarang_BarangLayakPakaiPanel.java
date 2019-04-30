@@ -33,7 +33,7 @@ public class PendataanBarang_BarangLayakPakaiPanel extends javax.swing.JPanel {
         this.docker = docker;
         this.parent = parent;
         initComponents();
-        initBarang();
+//        initBarang();
         initGambar();
 
     }
