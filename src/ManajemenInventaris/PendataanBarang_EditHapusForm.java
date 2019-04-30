@@ -12,6 +12,11 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
     private int idBarang;
     Connection koneksi;
     
+    private String id_barang;
+    private String nama_barang;
+    private String jenis_barang;
+    private String status_barang;
+    
     public PendataanBarang_EditHapusForm(PendataanBarang_BarangPanel barangPanel, int idBarang) {
         koneksi = DBconnection.getKoneksi();
         this.barangPanel = barangPanel;
@@ -198,10 +203,10 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void editData(){
-       String id_barang = noBarang.getText();
-       String nama_barang = noBarang.getText();
-       String jenis_barang = noBarang.getText();
-       String status_barang = noBarang.getText();
+       this.id_barang = noBarang.getText();
+       this.nama_barang = noBarang.getText();
+       this.jenis_barang = noBarang.getText();
+       this.status_barang = noBarang.getText();
         
         try{
             Statement stmt = koneksi.createStatement();
