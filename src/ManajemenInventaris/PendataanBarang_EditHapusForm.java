@@ -1,8 +1,13 @@
 package ManajemenInventaris;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
@@ -227,6 +232,23 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
             }catch(SQLException e){
                 
             }
+        }
+    }
+    
+    public void showData(String nis) throws ParseException{
+        try{
+            Statement stmt = koneksi.createStatement();
+            String query = "SELECT * FROM tbl_barang WHERE id_barang = '"+idBarang+"'";
+            ResultSet rs = stmt.executeQuery(query);
+            
+            rs.next();
+            noBarang.setText(rs.getString("id_barang"));
+            namaBarang.setText(rs.getString("nama_barang"));
+            jenisBarang.setText(rs.getString("jenis_barang"));
+            statusBarang.setText(rs.getString("status"));
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null,"Terjadi Kesalahan di Query");
         }
     }
     
