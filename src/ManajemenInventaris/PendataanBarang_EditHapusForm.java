@@ -107,6 +107,11 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
         jLabel6.setText("gambar_barang");
 
         jButton2.setText("Hapus Barang");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,7 +123,7 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jenisBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -140,7 +145,7 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
                                         .addComponent(jLabel5)
                                         .addGap(48, 48, 48)
                                         .addComponent(statusBarang, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(20, Short.MAX_VALUE))
+                        .addContainerGap(24, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
@@ -169,10 +174,12 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(statusBarang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(12, 12, 12))))
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
@@ -207,11 +214,15 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
         editData();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        HapusData();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public void editData(){
        this.id_barang = noBarang.getText();
-       this.nama_barang = noBarang.getText();
-       this.jenis_barang = noBarang.getText();
-       this.status_barang = noBarang.getText();
+       this.nama_barang = namaBarang.getText();
+       this.jenis_barang = statusBarang.getText();
+       this.status_barang = jenisBarang.getText();
         
         try{
             Statement stmt = koneksi.createStatement();
@@ -238,7 +249,7 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
     public void showData(String nis) throws ParseException{
         try{
             Statement stmt = koneksi.createStatement();
-            String query = "SELECT * FROM tbl_barang WHERE id_barang = '"+idBarang+"'";
+            String query = "SELECT * FROM tbl_barang WHERE id_barang = '"+this.idBarang+"'";
             ResultSet rs = stmt.executeQuery(query);
             
             rs.next();
@@ -251,6 +262,22 @@ public class PendataanBarang_EditHapusForm extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Terjadi Kesalahan di Query");
         }
     }
+    
+    public void HapusData(){
+        try {
+            Statement stmt = koneksi.createStatement();
+            String query = "DELETE FROM tbl_barang WHERE id_barang = " + this.idBarang + " AND status = 'rusak';";
+            int berhasil = stmt.executeUpdate(query);
+            if (berhasil == 1) {
+                JOptionPane.showMessageDialog(null, "Data Berhasil Dihapus");
+            } else {
+                JOptionPane.showMessageDialog(null, "Data Gagal Dihapus");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
