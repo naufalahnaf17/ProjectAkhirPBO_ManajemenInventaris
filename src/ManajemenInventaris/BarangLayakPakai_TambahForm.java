@@ -22,6 +22,7 @@ public class BarangLayakPakai_TambahForm extends javax.swing.JDialog {
         initComponents();
         koneksi = DatabaseConnection.getKoneksi();
         txtID.setEnabled(false);
+        barcod.setEnabled(false);
         
     }
 
@@ -46,6 +47,8 @@ public class BarangLayakPakai_TambahForm extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         calTglmasuk = new com.toedter.calendar.JDateChooser();
+        barcod = new javax.swing.JTextField();
+        txtUmurbrg = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -123,12 +126,14 @@ public class BarangLayakPakai_TambahForm extends javax.swing.JDialog {
                     .addComponent(jLabel9)
                     .addComponent(jLabel6))
                 .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(calTglmasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNamabrg, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNamabrg, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
                     .addComponent(cmbStatusbrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbJenisbrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbJenisbrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUmurbrg)
+                    .addComponent(txtID)
+                    .addComponent(barcod))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -143,8 +148,10 @@ public class BarangLayakPakai_TambahForm extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
-                .addGap(22, 22, 22)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(barcod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNamabrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -162,9 +169,11 @@ public class BarangLayakPakai_TambahForm extends javax.swing.JDialog {
                             .addComponent(cmbJenisbrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(26, 26, 26)
                         .addComponent(jLabel8)
-                        .addGap(28, 28, 28)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtUmurbrg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(calTglmasuk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,10 +210,11 @@ public class BarangLayakPakai_TambahForm extends javax.swing.JDialog {
         String Jenisbrg = (String) cmbJenisbrg.getSelectedItem();
         String Statusbrg = (String) cmbStatusbrg.getSelectedItem();
         String Tglmasuk = sdf.format(calTglmasuk.getDate());
+        String Umurbrg = txtUmurbrg.getText();
         try {
             Statement stmt = koneksi.createStatement();
-            String query = "INSERT INTO tbl_barang(nama_barang,tanggal_masuk,status,jenis_brg)"
-                    + "VALUES ('"+Namabrg+"','"+Tglmasuk+"','"+Statusbrg+"','"+Jenisbrg+"')";
+            String query = "INSERT INTO tbl_barang(nama_barang,tanggal_masuk,status,jenis_brg,umur_barang)"
+                    + "VALUES ('"+Namabrg+"','"+Tglmasuk+"','"+Statusbrg+"','"+Jenisbrg+"','"+Umurbrg+"')";
             System.out.println(query);
             int berhasil = stmt.executeUpdate(query);
             if(berhasil == 1){
@@ -276,6 +286,7 @@ public class BarangLayakPakai_TambahForm extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField barcod;
     private com.toedter.calendar.JDateChooser calTglmasuk;
     private javax.swing.JComboBox<String> cmbJenisbrg;
     private javax.swing.JComboBox<String> cmbStatusbrg;
@@ -293,5 +304,6 @@ public class BarangLayakPakai_TambahForm extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNamabrg;
+    private javax.swing.JTextField txtUmurbrg;
     // End of variables declaration//GEN-END:variables
 }
