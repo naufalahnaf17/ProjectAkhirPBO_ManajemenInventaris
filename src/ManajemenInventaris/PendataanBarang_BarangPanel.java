@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 public class PendataanBarang_BarangPanel extends javax.swing.JPanel {
@@ -62,7 +65,7 @@ public class PendataanBarang_BarangPanel extends javax.swing.JPanel {
     }
     
     private void getFromDB() {
-        String query = "SELECT * FROM t_barang WHERE kondisi = 'layakPakai'";
+        String query = "SELECT * FROM tbl_barang";
         
     }
     
@@ -140,7 +143,11 @@ public class PendataanBarang_BarangPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void label_gambarbarangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_label_gambarbarangMouseClicked
-        new PendataanBarang_EditHapusForm(this, 0).setVisible(true);
+        try {
+            new PendataanBarang_EditHapusForm(this,1,"Edit").setVisible(true);
+        } catch (ParseException ex) {
+            Logger.getLogger(PendataanBarang_BarangPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_label_gambarbarangMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
